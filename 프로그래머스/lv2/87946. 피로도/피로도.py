@@ -12,8 +12,7 @@ def solution(k, dungeons):
         temp_k = k
         for j in range(len(i)):
             if(temp_k >= i[j][0]):
-                temp_k = temp_k - i[j][1]
+                temp_k -= i[j][1]
                 count[temp] += 1
-    
-        
+                
     return max(count)
