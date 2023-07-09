@@ -2,9 +2,9 @@
 
 def solution(s):
     stack = []
-    for char in s:
-        if char == '(':
-            stack.append(char)
+    for i in s:
+        if i == '(':
+            stack.append(i)
         else:
             if not stack:  
                 return False
