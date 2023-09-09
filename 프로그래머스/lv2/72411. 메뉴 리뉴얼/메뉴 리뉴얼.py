@@ -4,29 +4,29 @@ from itertools import combinations
 
 def solution(orders, course):
     answer = []
-    counter = Counter()
+    counter = Counter()     # 딕셔너리
 
-    # 모든 주문에 대해 가능한 조합을 생성하고 카운트
-    for order in orders:
-        sorted_order = sorted(order)
-        for c in course:
-            for comb in combinations(sorted_order, c):
-                counter[''.join(comb)] += 1
-
-    # 각 코스 크기별로 가장 많이 주문된 조합을 찾음
-    for c in course:
+    for i in orders:
+        sorted_orders = sorted(i)    # EX) ACB -> ABC 정렬
+        for j in course:
+            for z in combinations(sorted_orders, j):
+                counter[''.join(z)] += 1
+                
+    
+    for i in course:
         max_count = -1
         best_combinations = []
-        for comb, count in counter.items():
-            if len(comb) == c:
-                if count > max_count:
-                    best_combinations = [comb]
-                    max_count = count
-                elif count == max_count:
-                    best_combinations.append(comb)
-
-        # 가장 많이 주문된 조합이 2번 이상 주문되었다면 answer에 추가
+        for k, v in counter.items():
+            if len(k) == i:
+                if v > max_count:
+                    best_combinations = [k]
+                    max_count = v
+                elif v == max_count:
+                    best_combinations.append(k)
+                    
         if max_count >= 2:
-            answer.extend(best_combinations)
-
-    return sorted(answer)
+            answer.extend(best_combinations)    #   최소 2명 이상의 손님에게서만 받은거 추가
+        
+    answer.sort()
+    
+    return answer
