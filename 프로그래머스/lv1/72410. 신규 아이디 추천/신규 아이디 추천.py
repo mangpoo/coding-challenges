@@ -42,7 +42,7 @@ def solution(new_id):
     # 7단계
     if len(new_id_str) <= 2:
         test_str = new_id_str[-1]
-        for i in range(3):
+        for i in range(2):
             new_id_str += test_str
             if len(new_id_str) == 3:
                 break
