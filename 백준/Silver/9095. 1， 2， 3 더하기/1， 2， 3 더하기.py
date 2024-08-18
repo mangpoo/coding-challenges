@@ -10,6 +10,7 @@ dp[3] = 4
 for i in range(4, 11):
     dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]
 
-for i in range(T):
-    n = int(input())
-    print(dp[n])
+while(T > 0):
+    result = int(input())
+    print(dp[result])
+    T = T - 1
