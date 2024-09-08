@@ -8,24 +8,24 @@ def solution(users, emoticons):
     answer = []
     
     for d in product(discount_rate, repeat=len(emoticons)):
-        plus = 0
+        emoticon_plus = 0
         sales = 0
-        for u_rate, u_price in users:
-            cost = 0
+        for user_rate, user_price in users:
+            sum = 0
 
             for i in range(len(emoticons)):
-                if d[i] >= u_rate:
-                    cost += emoticons[i] * (100 - d[i]) // 100
+                if d[i] >= user_rate:
+                    sum += emoticons[i] * (100 - d[i]) // 100
 
-            if cost >= u_price:
-                plus += 1
+            if sum >= user_price:
+                emoticon_plus += 1
             else:
-                sales += cost
+                sales += sum
 
-        if plus > max_plus:
-            max_plus = plus
+        if emoticon_plus > max_plus:
+            max_plus = emoticon_plus
             max_sales = sales
-        elif plus == max_plus:
+        elif emoticon_plus == max_plus:
             max_sales = max(max_sales, sales)
             
     answer.append(max_plus)
